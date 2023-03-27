@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Un R de rien</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -16,17 +16,17 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
-    <?php include_once('includes/functions.php');  ?> 
+    <?php include_once('includes/functions.php'); ?> 
     <?php include_once('partials/_flash.php');?>
     <body id="page-top">
         <!-- Navigation-->
         <?php include_once('partials/nav.php');?>
         <!-- Masthead-->
         <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+        <div class="container">
+                <div class="masthead-subheading">Un R de rien qui contribue beaucoup</div>
+                <div class="masthead-heading text-uppercase">Trions différemment nos déchets ensemble</div>
+                <div class="masthead-subheading">Il était temps de s’y mettre !</div>
             </div>
         </header>
         <!-- Services-->
@@ -35,10 +35,10 @@
         <?php include_once('partials/about.html');?>
         <!-- Team-->
         <?php include_once('partials/team.html');?>
-        <!-- Clients-->
-        <?php include_once('partials/clients.html');?>
+        <!-- Partenaires-->
+        <!-- <?php include_once('partials/clients.html');?> -->
         <!-- Contact-->
-        <?php include_once('partials/contacts.html');?>
+        <!-- <?php include_once('partials/contacts.html');?> -->
         <!-- Footer-->
         <?php include_once('partials/footer.html');?>   
         <!-- Bootstrap core JS-->

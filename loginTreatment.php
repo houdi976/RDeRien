@@ -25,7 +25,10 @@
               if(password_verify($password,$resultat['password'])){
                   $_SESSION['email']=$email;
                   $_SESSION['password']=$password;
-                  header('Location:consumer/persoPpage.php');
+                  $_SESSION['photo']= $resultat['photo'];
+                  
+                  header('Location:persoPpage.php');
+                  // header('Location:consumer/persoPpage.php');
               }else{
                 $login_error = "Mauvais mot de passe";
                 echo $login_error; 

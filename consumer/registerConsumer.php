@@ -19,7 +19,7 @@
                         <span>
                             <h3>Inscription </h3>
                         </span>
-                        <form id="signupform" class="form-horizontal" method="post">
+                        <form id="signupform" class="form-horizontal" method="post" enctype="multipart/form-data">
 
                             <?php session_start();
                             require_once('registerConsumerTreatment.php');?>
@@ -90,7 +90,8 @@
 
                             <div class="form-group">
                                 <div class="col-md-12 col-sm-9 col-xs-9">
-                                    <input required="false" type="file" class="form-control" name="photo" placeholder="photo de profil">
+                                    <input required="false" type="file" class="form-control" name="photo" placeholder="photo de profil"
+                                    >
                                 </div>
                             </div>
 

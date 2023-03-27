@@ -18,9 +18,20 @@ if (isset($_POST['register'])) {
         $number = $_POST['number'];
         $typeUsers = $_POST['typeUsers'];
         //Si l'utilisateur charge une photo
-        if (not_empty(['photo'])) {
-            $photo = $_POST['photo'];
-        } else {
+        // if (not_empty(['photo'])) {
+        //     // $photo = $_POST['photo'];
+        //     $photo = file_get_contents($_POST['photo']);
+        // } else {
+        //     $photo = "";
+        // }
+      
+        if(isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+            // Lecture du contenu de l'image
+            $file_name = $_FILES['photo']['name'];
+            $file_tmp_name = $_FILES['photo']['tmp_name'];
+            $file_dest = 'files/'.$file_name;
+            if(move_uploaded_file($file_tmp_name, $file_dest));
+        }else {
             $photo = "";
         }
 
@@ -60,7 +71,7 @@ if (isset($_POST['register'])) {
                 $requete->bindParam('email', $email);
                 $requete->bindParam('password', $hashed_password);
                 $requete->bindParam('number', $number);
-                $requete->bindParam('photo', $photo);
+                $requete->bindParam('photo', $file_name);
                 $requete->bindParam('typeUsers', $typeUsers);
                 $requete->execute();
 

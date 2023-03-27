@@ -53,7 +53,7 @@
 			if (isset($_SESSION)) {
 				// Il s'agit des données qui ont été stockées depuis le login/register
 				$requirements = array(
-					'pseudo',
+					'email',
 				);
 
 				foreach ($requirements as $req) {
