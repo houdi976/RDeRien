@@ -83,79 +83,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                 </div>
                 
-                        <!--Fin Modal-->
+                      
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--//signin and signup form ends here-->
-     <!-- footer -->
-
-<!-- //home -->
-    <!-- js -->
-    <script src="js/jquery-2.2.3.min.js"></script>
-    <!-- //js -->
-    <!--search jQuery-->
-    <script src="js/main.js"></script>
-    <!--search jQuery-->
-    <!-- cart-js -->
-    <script src="js/minicart.js"></script>
-    <script>
-        chr.render();
-
-        chr.cart.on('new_checkout', function (evt) {
-            var items, len, i;
-
-            if (this.subtotal() > 0) {
-                items = this.items();
-
-                for (i = 0, len = items.length; i < len; i++) {}
-            }
-        });
-    </script>
-    <!-- //cart-js -->
-
-    <!-- dropdown nav -->
-    <script>
-        $(document).ready(function () {
-            $(".dropdown").hover(
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
-                    $(this).toggleClass('open');
-                },
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
-                    $(this).toggleClass('open');
-                }
-            );
-        });
-    </script>
-    <script src="js/scrolling-nav.js"></script>
-    <script src="js/move-top.js"></script>
-    <script src="js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 1000);
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <script src="js/SmoothScroll.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    
 </body>
 
 </html>

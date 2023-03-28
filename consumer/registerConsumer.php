@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
     <link href="../css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
     <link href="../css/shop.css" type="text/css" rel="stylesheet" media="all">
     <link href="../css/styleRegister.css" type="text/css" rel="stylesheet" media="all">
@@ -29,7 +34,7 @@
                                 <div class="col-md-12 col-sm-9 col-xs-9">
                                     <input type="text" class="form-control" name="name" placeholder="Name"
                                         required="true">
-                                        
+
                                 </div>
                             </div>
                             <div class="form-group">
@@ -47,14 +52,8 @@
 
                             <div class="form-group">
                                 <div class="col-md-12 col-sm-9 col-xs-9">
-                                    <input type="number" id="number" class="form-control" name="number" placeholder="Mobile number"
-                                        required="true">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
                                     <select id="sexe" name="sexe" class="col-md-5 col-sm-9 col-xs-9"
-                                        style="height:40px">
+                                        style="height:40px" required="true">
                                         <option value="" disabled selected>--- Sexe ---</option>
                                         <?php 
                                             require('../config/database.php');
@@ -70,8 +69,8 @@
             
                                         ?>
                                     </select>
-                                    <div class="col-md-2 col-sm-9 col-xs-9"></div>
-                                    <select name="typeUsers" class="col-md-5 col-sm-9 col-xs-9" style="height:40px">
+                                    <div class="col-md-2 col-sm-9 col-xs-9 "></div>
+                                    <select name="typeUsers" class="col-md-5 col-sm-9 col-xs-9" style="height:40px" required="true">
                                         <option value="" disabled selected>--- Type de profil ---</option>
                                         <?php 
                                             $q = $db->prepare('SELECT t.libelleTypeUser
@@ -87,11 +86,82 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                    <input type="number" id="number" class="form-control" name="number"
+                                        placeholder="Mobile number" required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                    <input type="text" id="adresse" class="form-control" name="adresse"
+                                        placeholder="votre adresse" required="true">
+
+                                    <script>
+                                    $(function() {
+                                        $("#adresse").autocomplete({
+                                            source: function(request, response) {
+                                                $.ajax({
+                                                    url: "https://api-adresse.data.gouv.fr/search/",
+                                                    dataType: "json",
+                                                    data: {
+                                                        q: request.term
+                                                    },
+                                                    success: function(data) {
+                                                        response($.map(data.features,
+                                                            function(item) {
+                                                                return {
+                                                                    label: item
+                                                                        .properties
+                                                                        .label,
+                                                                    value: item
+                                                                        .properties.housenumber+' '+item.properties.street,
+                                                                    code_postal: item
+                                                                        .properties
+                                                                        .postcode,
+                                                                    ville: item
+                                                                        .properties
+                                                                        .city,
+                                                                    adresse: item
+                                                                        .properties
+                                                                }
+                                                            }));
+                                                    }
+                                                });
+                                            },
+                                            minLength: 3,
+                                            select: function(event, ui) {
+                                                console.log("Adresse sélectionnée : " + ui.item
+                                                    .value);
+                                                var adresse = ui.item.adresse;
+                                                $("#code_postal").val(adresse.postcode);
+                                                $("#ville").val(adresse.city);
+                                                $("#adresse").val(adresse.housenumber+' '+adresse.street);
+                                                console.log("Adresse voulue : " + adresse.housenumber+' '+adresse.street);
+                                            }
+                                        });
+                                    });
+                                    </script>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-md-12 col-sm-9 col-xs-9">
-                                    <input required="false" type="file" class="form-control" name="photo" placeholder="photo de profil"
-                                    >
+
+                                    <input type="text" id="code_postal" name="code_postal" style="height:40px"
+                                        class="col-md-5 col-sm-9 col-xs-9">
+
+                                    <div class="col-md-2 col-sm-9 col-xs-9"></div>
+
+                                    <input type="text" id="ville" name="ville" style="height:40px"
+                                        class="col-md-5 col-sm-9 col-xs-9" >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                    <input required="false" type="file" class="form-control" name="photo"
+                                        placeholder="photo de profil">
                                 </div>
                             </div>
 
@@ -130,24 +200,23 @@
 
 </html>
 <script>
-    // Sélectionner l'élément HTML correspondant au champ "number"
+// Sélectionner l'élément HTML correspondant au champ "number"
 const numberField = document.getElementById("number");
 
 // Ajouter un écouteur d'événements pour intercepter la saisie de l'utilisateur
 numberField.addEventListener("input", function(event) {
 
-  // Récupérer la valeur saisie par l'utilisateur
-  const value = event.target.value;
+    // Récupérer la valeur saisie par l'utilisateur
+    const value = event.target.value;
 
-  // Vérifier si la valeur saisie ne contient que des chiffres et a une longueur de 10 caractères
-  if (/^\d{10}$/.test(value)) {
-    // La saisie est valide, on peut laisser le champ inchangé
-    numberField.setCustomValidity("");
-  } else {
-    // La saisie n'est pas valide, on indique à l'utilisateur qu'il doit entrer exactement 10 chiffres
-    numberField.setCustomValidity("Numéro de téléphone non valide.");
-  }
+    // Vérifier si la valeur saisie ne contient que des chiffres et a une longueur de 10 caractères
+    if (/^\d{10}$/.test(value)) {
+        // La saisie est valide, on peut laisser le champ inchangé
+        numberField.setCustomValidity("");
+    } else {
+        // La saisie n'est pas valide, on indique à l'utilisateur qu'il doit entrer exactement 10 chiffres
+        numberField.setCustomValidity("Numéro de téléphone non valide.");
+    }
 
 });
-
 </script>

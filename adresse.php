@@ -10,8 +10,9 @@
 <body>
 	<label for="adresse">Adresse :</label>
 	<input type="text" id="adresse">
-	<input type="text" id="code_postal">
-	<input type="text" id="ville">
+	<p>Ville : <span id="ville"></span></p>
+	<p>Code INSEE : <span id="code_insee"></span></p>
+	<p>Route : <span id="route"></span></p>
 	<script>
 		$(function() {
 			$("#adresse").autocomplete({
@@ -26,9 +27,7 @@
 							response($.map(data.features, function(item) {
 								return {
 									label: item.properties.label,
-									value: item.properties.housenumber+' '+item.properties.street,
-									code_postal: item.properties.postcode,
-									ville: item.properties.city,
+									value: item.properties.label,
 									adresse: item.properties
 								}
 							}));
@@ -39,8 +38,9 @@
 				select: function(event, ui) {
 					console.log("Adresse sélectionnée : " + ui.item.value);
 					var adresse = ui.item.adresse;
-					$("#code_postal").val(adresse.postcode);
-					$("#ville").val(adresse.city);
+					$("#ville").text(adresse.city);
+					$("#code_insee").text(adresse.citycode);
+					$("#route").text(adresse.street);
 				}
 			});
 		});

@@ -6,7 +6,7 @@ require('../includes/functions.php');
 if (isset($_POST['register'])) {
 
     //Si tous les champs sont remplis
-    if (not_empty(['name', 'surname', 'sexe', 'email', 'pass', 'passConfirm', 'number', 'typeUsers'])) {
+    if (not_empty(['name', 'surname', 'sexe', 'email', 'pass', 'passConfirm', 'number', 'typeUsers','adresse','ville','code_postal'])) {
         extract($_POST);
 
         $name = $_POST['name'];
@@ -17,14 +17,15 @@ if (isset($_POST['register'])) {
         $passwordConfirm = $_POST['passConfirm'];
         $number = $_POST['number'];
         $typeUsers = $_POST['typeUsers'];
-        //Si l'utilisateur charge une photo
-        // if (not_empty(['photo'])) {
-        //     // $photo = $_POST['photo'];
-        //     $photo = file_get_contents($_POST['photo']);
-        // } else {
-        //     $photo = "";
-        // }
-      
+        //Adresse
+        $adresse = $_POST['adresse'];
+        $ville = $_POST['ville'];
+        $code_postal = $_POST['code_postal'];
+
+        var_dump($adresse);
+        var_dump($ville);
+        var_dump($code_postal);
+        
         if(isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
             // Lecture du contenu de l'image
             $file_name = $_FILES['photo']['name'];
@@ -43,12 +44,6 @@ if (isset($_POST['register'])) {
         }
 
         if (!isset($register_errors)) {
-
-            // $rUser = $db->prepare('SELECT u.name FROM users u');
-            //          $rUser->execute();
-            //          $rUserResult = $rUser->fetch();
-                    // Affichage des données dans la liste déroulante
-           
                                             
             $query = $db->prepare("SELECT * FROM users WHERE email= :email");
             $query->bindParam('email', $email);
@@ -75,7 +70,9 @@ if (isset($_POST['register'])) {
                 $requete->bindParam('typeUsers', $typeUsers);
                 $requete->execute();
 
+                //HAVE USER ID
                 $id = $db->lastInsertId();
+                //INSERT TYPE USER TABLE
                 if ($typeUsers == "Consommateur") {
                     $req = $db->prepare("INSERT INTO consumers(consumer_id)
                     VALUES(:consumer_id)");
@@ -88,16 +85,17 @@ if (isset($_POST['register'])) {
                 } else if ($typeUsers == "Recycleur") {
 
                 }
+                //INSERT Adress
+                $re = $db->prepare("INSERT INTO 
+                    address(adresse,postal_code,city,id_user)
+                    VALUES(:adresse,:postal_code,:city,:id_user)");
+                $re->bindParam('adresse', $adresse);
+                $re->bindParam('postal_code', $code_postal);
+                $re->bindParam('city', $ville);
+                $re->bindParam('id_user', $id);
+                $re->execute();
+
             }
         }
     }
 }
-
-//     $password = $_POST['password'];
-// $hashed_password = get_hashed_password_from_db($username);
-
-// if (password_verify($password, $hashed_password)) {
-//     // Mot de passe valide
-// } else {
-//     // Mot de passe invalide
-// }

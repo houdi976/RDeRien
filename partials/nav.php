@@ -19,9 +19,9 @@
                 <a class="navbar-brand" href="#page-top"><img src="assets/img/cloche.png" alt="..." /></a>
                 
                 <?php if (!isLogged()) { ?>
-                <a class="navbar-brand" href="preregister.php"><img src="assets/img/register.png" alt="..." /></a>
+                <a class="navbar-brand" href="preregister.php" title="Inscription"><img src="assets/img/register.png" alt="..." /></a>
                 
-                    <a class="navbar-brand" href="login.php">
+                    <a class="navbar-brand" href="login.php" title="Connexion">
                         <img src="assets/img/profile-icon.png" alt="..." />
                     </a>
                 
