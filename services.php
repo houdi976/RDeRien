@@ -1,49 +1,172 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
+
 <head>
-	<title>Autocomplétion d'adresses en France</title>
-	<meta charset="UTF-8">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+    </script>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/shop.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/styleRegister.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/font-awesome.css" rel="stylesheet">
+
 </head>
-<body>
-	<label for="adresse">Adresse :</label>
-	<input type="text" id="adresse">
-	<input type="text" id="code_postal">
-	<input type="text" id="ville">
-	<script>
-		$(function() {
-			$("#adresse").autocomplete({
-				source: function(request, response) {
-					$.ajax({
-						url: "https://api-adresse.data.gouv.fr/search/",
-						dataType: "json",
-						data: {
-							q: request.term
-						},
-						success: function(data) {
-							response($.map(data.features, function(item) {
-								return {
-									label: item.properties.label,
-									value: item.properties.housenumber+' '+item.properties.street,
-									code_postal: item.properties.postcode,
-									ville: item.properties.city,
-									adresse: item.properties
-								}
-							}));
-						}
-					});
-				},
-				minLength: 3,
-				select: function(event, ui) {
-					console.log("Adresse sélectionnée : " + ui.item.value);
-					var adresse = ui.item.adresse;
-					$("#code_postal").val(adresse.postcode);
-					$("#ville").val(adresse.city);
-				}
-			});
-		});
-	</script>
+
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div id="home">
+        <div class="login-form section text-center">
+            <div class="container">
+                <div id="loginbox" style="margin-top:30px;" class="mainbox  loginbox">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Connexion</div>
+                        </div>
+                        <div style="padding-top:30px" class="panel-body">
+                            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            <form id="loginform" class="form-horizontal" action="" method="post">
+                                <?php require_once('loginTreatment.php');?>
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                    <input id="email" type="text" class="form-control" name="email"
+                                        placeholder="Votre Email" required="true">
+                                </div>
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                        placeholder="Votre mot de passe" required="true">
+                                </div>
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                        placeholder="Votre mot de passe" required="true">
+                                </div>
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                        placeholder="Votre mot de passe" required="true">
+                                </div>
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                        placeholder="Votre mot de passe" required="true">
+                                </div>
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                        placeholder="Votre mot de passe" required="true">
+                                </div>
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
+                                    <input id="password" type="password" class="form-control" name="password"
+                                        placeholder="Votre mot de passe" required="true">
+                                </div>
+
+                                <div class="form-group ">
+                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                    <select id="sexe" name="sexe" class="col-md-5 col-sm-9 col-xs-9 form-"
+                                        style="height:40px" required="true">
+                                        <option value="" disabled selected>--- Sexe ---</option>
+                                        <?php 
+                                            require('config/database.php');
+                                            require('includes/functions.php');
+                                            $q = $db->prepare('SELECT s.libelleSexe,s.sexe
+                                            FROM sexe s');
+                                            $qr = $q->execute();
+                                            // Affichage des données dans la liste déroulante
+           
+                                            while($donnees = $q->fetch()) {
+                                                echo '<option value="' . $donnees["sexe"] . '">' . $donnees["libelleSexe"] . '</option>';
+                                            }
+            
+                                        ?>
+                                    </select>
+                                    <div class="col-md-2 col-sm-9 col-xs-9 "></div>
+                                    <select name="typeUsers" class="col-md-5 col-sm-9 col-xs-9" style="height:40px" required="true">
+                                        <option value="" disabled selected>--- Type de profil ---</option>
+                                        <?php 
+                                            $q = $db->prepare('SELECT t.libelleTypeUser
+                                            FROM typeuser t');
+                                            $qr = $q->execute();
+                                            // Affichage des données dans la liste déroulante
+           
+                                            while($donnees = $q->fetch()) {
+                                                echo '<option value="' . $donnees["libelleTypeUser"] . '">' . $donnees["libelleTypeUser"] . '</option>';
+                                            }
+            
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+                                    <div class="col-sm-12 controls">
+                                        <input id="btn-login" name="login" type="submit" class="btn btn-success"
+                                            value="Connexion " />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                            Pas de compte!
+                                            <a href="preregister.php">
+                                                Inscription
+                                            </a>
+
+                                            <h4><a class="navbar-brand" href="index.php">ACCUEIL</a></h4>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Fin Modal-->
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
 </body>
+
 </html>

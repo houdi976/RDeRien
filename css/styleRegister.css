@@ -3352,4 +3352,12 @@ button#btn-signup {
 	}
 }
 
+.cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+
 /* -- //Responsive code -- */

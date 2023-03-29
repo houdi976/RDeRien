@@ -13,49 +13,59 @@
     <!-- font-awesome icons -->
     <link href="../css/font-awesome.css" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="login-form section text-center">
-        <div class="container" style="margin-top:100px;">
-            <div id="loginbox" class="mainbox  loginbox">
-                <div class="row">
-                    <div style="padding-top:30px" class="panel-body">
-                        <span>
-                            <h3>Inscription </h3>
-                        </span>
-                        <form id="signupform" class="form-horizontal" method="post" enctype="multipart/form-data">
+        <div class="container">
 
-                            <?php session_start();
+            <div class="container">
+
+
+
+                <div id="loginbox" style="margin-top:30px;" class="mainbox  loginbox">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Inscription</div>
+                        </div>
+                        <div style="padding-top:30px" class="panel-body">
+                            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            <form id="signupform" class="form-horizontal" method="post" enctype="multipart/form-data">
+
+                                <?php session_start();
                             require_once('registerConsumerTreatment.php');?>
-                            <?php include_once('../partials/_flash.php');?>
+                                <?php include_once('../partials/_flash.php');?>
 
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
-                                    <input type="text" class="form-control" name="name" placeholder="Name"
-                                        required="true">
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
-                                    <input type="text" class="form-control" name="surname" placeholder="Surname"
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="name" placeholder="Nom"
                                         required="true">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="surname" placeholder="Prénom"
+                                        required="true">
+                                </div>
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                    </span>
                                     <input type="email" class="form-control" name="email" placeholder="Email"
                                         required="true">
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
-                                    <select id="sexe" name="sexe" class="col-md-5 col-sm-9 col-xs-9"
-                                        style="height:40px" required="true">
-                                        <option value="" disabled selected>--- Sexe ---</option>
-                                        <?php 
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-9 col-xs-9">
+                                        <select id="sexe" name="sexe" class="col-md-5 col-sm-9 col-xs-9"
+                                            style="height:40px" required="true">
+                                            <option value="" disabled selected>--- Sexe ---</option>
+                                            <?php 
                                             require('../config/database.php');
                                             // require('../includes/functions.php');
                                             $q = $db->prepare('SELECT s.libelleSexe,s.sexe
@@ -68,11 +78,12 @@
                                             }
             
                                         ?>
-                                    </select>
-                                    <div class="col-md-2 col-sm-9 col-xs-9 "></div>
-                                    <select name="typeUsers" class="col-md-5 col-sm-9 col-xs-9" style="height:40px" required="true">
-                                        <option value="" disabled selected>--- Type de profil ---</option>
-                                        <?php 
+                                        </select>
+                                        <div class="col-md-2 col-sm-9 col-xs-9 "></div>
+                                        <select name="typeUsers" class="col-md-5 col-sm-9 col-xs-9" style="height:40px"
+                                            required="true">
+                                            <option value="" disabled selected>--- Type de profil ---</option>
+                                            <?php 
                                             $q = $db->prepare('SELECT t.libelleTypeUser
                                             FROM typeuser t');
                                             $qr = $q->execute();
@@ -83,20 +94,22 @@
                                             }
             
                                         ?>
-                                    </select>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-earphone"></i>
+                                    </span>
                                     <input type="number" id="number" class="form-control" name="number"
-                                        placeholder="Mobile number" required="true">
+                                        placeholder="Numéro de téléphone" required="true">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-map-marker"></i>
+                                    </span>
                                     <input type="text" id="adresse" class="form-control" name="adresse"
                                         placeholder="votre adresse" required="true">
-
                                     <script>
                                     $(function() {
                                         $("#adresse").autocomplete({
@@ -108,14 +121,20 @@
                                                         q: request.term
                                                     },
                                                     success: function(data) {
-                                                        response($.map(data.features,
+                                                        response($.map(data
+                                                            .features,
                                                             function(item) {
                                                                 return {
                                                                     label: item
                                                                         .properties
                                                                         .label,
                                                                     value: item
-                                                                        .properties.housenumber+' '+item.properties.street,
+                                                                        .properties
+                                                                        .housenumber +
+                                                                        ' ' +
+                                                                        item
+                                                                        .properties
+                                                                        .street,
                                                                     code_postal: item
                                                                         .properties
                                                                         .postcode,
@@ -136,66 +155,81 @@
                                                 var adresse = ui.item.adresse;
                                                 $("#code_postal").val(adresse.postcode);
                                                 $("#ville").val(adresse.city);
-                                                $("#adresse").val(adresse.housenumber+' '+adresse.street);
-                                                console.log("Adresse voulue : " + adresse.housenumber+' '+adresse.street);
+                                                $("#adresse").val(adresse.housenumber + ' ' +
+                                                    adresse.street);
+                                                console.log("Adresse voulue : " + adresse
+                                                    .housenumber + ' ' + adresse.street);
                                             }
                                         });
                                     });
                                     </script>
                                 </div>
-                            </div>
+                                <!-- <div class="cont">
+                                
+                                        <input type="text" id="code_postal" name="code_postal" style="margin-bottom: 25px; width:200px" class="form-control"
+                                            required="true">
+                                
+                                        <input type="text" id="ville" name="ville" style="margin-bottom: 25px; width:200px"  class="form-control"  required="true">
+                               
+                                </div> -->
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-9 col-xs-9">
 
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                        <input type="text" id="code_postal" name="code_postal" style="height:40px"
+                                            class="col-md-5 col-sm-9 col-xs-9">
 
-                                    <input type="text" id="code_postal" name="code_postal" style="height:40px"
-                                        class="col-md-5 col-sm-9 col-xs-9">
+                                        <div class="col-md-2 col-sm-9 col-xs-9"></div>
 
-                                    <div class="col-md-2 col-sm-9 col-xs-9"></div>
-
-                                    <input type="text" id="ville" name="ville" style="height:40px"
-                                        class="col-md-5 col-sm-9 col-xs-9" >
+                                        <input type="text" id="ville" name="ville" style="height:40px"
+                                            class="col-md-5 col-sm-9 col-xs-9">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-picture"></i>
+                                    </span>
                                     <input required="false" type="file" class="form-control" name="photo"
                                         placeholder="photo de profil">
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                <div style="margin-bottom: 25px;" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
                                     <input type="password" class="form-control" name="pass" placeholder="Password"
                                         required="true">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-9 col-xs-9">
+                                <div style="margin-bottom: 25px;" class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-lock"></i>
+                                    </span>
                                     <input type="password" class="form-control" name="passConfirm"
                                         placeholder="Confirm Password" required="true">
-                                </div>
-                            </div>
 
-                            <div class="form-group">
-                                <!-- Button -->
-                                <div class="col-sm-5 controls">
-                                    <button id="btn-login" name="register" class="btn btn-success">Sign in </button>
                                 </div>
-                                <div class="col-md-7 col-sm-3 col-xs-3">
-                                    <a href="../index.php">
-                                        <h4>RETOUR</h4>
-                                    </a>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12 controls">
+                                        <button id="btn-login" name="register"
+                                            class="btn btn-success">Inscription</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                            <h4><a class="navbar-brand" href="../index.php">ACCUEIL</a></h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+        <?php include_once('../partials/footer.html');?>
 </body>
 
 </html>
