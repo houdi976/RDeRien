@@ -12,41 +12,43 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a style="color:yellowgreen; font-weight: bold;" class="nav-link"
-                        href="./matiereRecyclee.php">
-                        <button id="btn-login" class="btn btn-success">
-                            Matières recyclables
-                        </button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a style="color:yellowgreen; font-weight: bold;" class="nav-link"
-                        href="./index.php#about">
-                        <button id="btn-login" class="btn btn-success">
-                            J’agis
-                        </button>
-                    </a>
-                </li>
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/cloche.png" alt="..." /></a>
-                
+
+                <a style="color:yellowgreen; font-weight: bold;" class="nav-link" href="./matiereRecyclee.php">
+                    <button id="btn-login" class="btn btn-success">
+                        Matières recyclables
+                    </button>
+                </a>
+
+                <a style="color:yellowgreen; font-weight: bold;" class="nav-link" href="./index.php#about">
+                    <button id="btn-login" class="btn btn-success">
+                        J’agis
+                    </button>
+                </a>
+
                 <?php if (!isLogged()) { ?>
-                <a class="navbar-brand" href="preregister.php" title="Inscription"><img src="assets/img/register.png" alt="..." /></a>
-                
-                    <a class="navbar-brand" href="login.php" title="Connexion">
-                        <img src="assets/img/profile-icon.png" alt="..." />
-                    </a>
-                
+                <a style="color:yellowgreen; font-weight: bold;" class="nav-link" href="preregister.php">
+                    <button id="btn-login" class="btn btn-success">
+                        Inscription
+                    </button>
+                </a>
+                <a style="color:yellowgreen; font-weight: bold;" class="nav-link" href="login.php">
+                    <button id="btn-login" class="btn btn-success">
+                        Connexion
+                    </button>
+                </a>
+
                 <?php } else { 
                     $chemin = "consumer/files/".$_SESSION['photo'];
                     ?>
-                
-                    <a class="navbar-brand" href="persoPpage.php" title="<?php echo "".$_SESSION['email'] ; ?>">
-                        <img src="<?php echo $chemin; ?>" alt="..." style="border-radius: 50%;"/>
-                    </a>
-                    
-                    <a class="navbar-brand" href="deconnexion.php">
-                        <img src="assets/img/logout.png" alt="..." />
-                    </a>
+                <a class="navbar-brand" href="#page-top"><img src="assets/img/cloche.png" alt="..." /></a>
+
+                <a class="navbar-brand" href="persoPpage.php" title="<?php echo "".$_SESSION['email'] ; ?>">
+                    <img src="<?php echo $chemin; ?>" alt="..." style="border-radius: 50%;" />
+                </a>
+
+                <a class="navbar-brand" href="deconnexion.php">
+                    <img src="assets/img/logout.png" alt="..." />
+                </a>
                 <?php } ?>
             </ul>
         </div>
