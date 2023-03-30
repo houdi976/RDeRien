@@ -38,18 +38,25 @@
         </div>
         <div class="container">
             <div class="row">
+                
                 <div class="col-lg-4">
                     <div class="team-member">
+                    <div>
+                        <span>Edit profil page</span>
+                    </div>
                         <img style="margin-top: 100px; border-radius: 50%;" src="<?php echo $chemin; ?>" alt=""
                             class="img-thumbnail img-circle" />
                         <p class="text-muted"><?php echo"".$userInfo['name']. " ".$userInfo['surname']; ?>
                         </p>
+                        
                     </div>
+                    
                 </div>
             </div>
         </div>
         </div>
     </section>
+
 
 </body>
 

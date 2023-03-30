@@ -1,4 +1,3 @@
-
 <?php 
 	//include_once('/config/database.php');
 	
@@ -140,3 +139,41 @@
 			}
 		}
 	}
+
+	//Récupérer les notifications non lues
+	function getNotificationsNonLues() {
+		if (isset($_SESSION)) {
+		global $db;
+		// préparer la requête SQL
+		$que = $db->prepare("SELECT * FROM notifications N WHERE N.id_utilisateur = :id 
+										AND etat='non lue'");
+				$que->bindParam('id', $_SESSION['id']);
+				$r = $que->execute();
+				if (!$r) {
+					die("Erreur dans la requête : " . mysqli_error($que));
+				}
+				$notification = $que->fetch();
+				$que->closeCursor();
+				return $notification;
+	  }
+	}
+
+	  	//Récupérer les notifications non lues
+	if (!function_exists('getNombreNotificationsNonLues')) {
+		function getNombreNotificationsNonLues() {
+			if (isset($_SESSION)) {
+				global $db;
+				// préparer la requête SQL
+				$query = $db->prepare("SELECT COUNT(*) FROM notifications n WHERE n.id_utilisateur = :id 
+										and etat='non lue'");
+				$query->bindParam('id', $_SESSION['id']);
+				$query->execute();
+				$nombreNotification = $query->fetchColumn();
+				$query->closeCursor();
+				if(!empty($nombreNotification))
+					return $nombreNotification;
+				else return 0;
+	  		}
+		}
+	}
+	  

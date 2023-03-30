@@ -71,7 +71,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
                                             Pas de compte!
-                                            <a href="preregister.php">
+                                            <a href="preregister.php" style="font-weight: bold">
                                                 Inscription
                                             </a>
                                             <h4><a class="navbar-brand" href="index.php">ACCUEIL</a></h4>

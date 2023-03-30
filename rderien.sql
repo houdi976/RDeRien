@@ -173,12 +173,23 @@ CREATE TABLE IF NOT EXISTS `typeUser` (
   `libelleTypeUser` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+/*Notification*/
+CREATE TABLE notifications (
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  texte VARCHAR(255) NOT NULL,
+  id_utilisateur INT(11) NOT NULL,
+  etat ENUM('non lue', 'lue') NOT NULL DEFAULT 'non lue',
+  date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_utilisateur) REFERENCES users(id)
+);
+
 INSERT INTO `typeUser` ( `libelleTypeUser`) VALUES
 ('Consommateur'), ('Collecteur'), ('Recycleur');
 
 INSERT INTO `sexe` ( `libelleSexe`, `sexe`) VALUES
 ('Masculin', 'M'),
 ('Féminin', 'F');
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

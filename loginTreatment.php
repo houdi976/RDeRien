@@ -26,8 +26,11 @@
                   $_SESSION['email']=$email;
                   $_SESSION['password']=$password;
                   $_SESSION['photo']= $resultat['photo'];
+                  $_SESSION['id']= $resultat['id'];
+                  $_SESSION['name']= $resultat['name'];
+                  $_SESSION['nbNotif']=  getNombreNotificationsNonLues();
                   
-                  header('Location:persoPpage.php');
+                  header('Location:index.php');
                   // header('Location:consumer/persoPpage.php');
               }else{
                 $login_error = "Mauvais mot de passe";

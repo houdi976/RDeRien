@@ -22,9 +22,9 @@ if (isset($_POST['register'])) {
         $ville = $_POST['ville'];
         $code_postal = $_POST['code_postal'];
 
-        var_dump($adresse);
-        var_dump($ville);
-        var_dump($code_postal);
+        // var_dump($adresse);
+        // var_dump($ville);
+        // var_dump($code_postal);
         
         if(isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
             // Lecture du contenu de l'image
@@ -94,6 +94,13 @@ if (isset($_POST['register'])) {
                 $re->bindParam('city', $ville);
                 $re->bindParam('id_user', $id);
                 $re->execute();
+
+                // INSERT NOTIFICATION
+                $texte_notification = 'Bienvenue sur le site RdeRien, premier pas pour protéger notre planète';
+                $r = $db->prepare("INSERT INTO notifications (texte, id_utilisateur) VALUES (:texte_notification, :id)");
+                $r->bindParam('texte_notification', $texte_notification);
+                $r->bindParam('id', $id);
+                $r->execute();
 
             }
         }

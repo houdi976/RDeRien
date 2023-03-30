@@ -197,7 +197,7 @@
                                     <span class="input-group-addon">
                                         <i class="glyphicon glyphicon-lock"></i>
                                     </span>
-                                    <input type="password" class="form-control" name="pass" placeholder="Password"
+                                    <input type="password" class="form-control" name="pass" placeholder="Mot de passe"
                                         required="true">
                                 </div>
                                 <div style="margin-bottom: 25px;" class="input-group">
@@ -205,7 +205,7 @@
                                         <i class="glyphicon glyphicon-lock"></i>
                                     </span>
                                     <input type="password" class="form-control" name="passConfirm"
-                                        placeholder="Confirm Password" required="true">
+                                        placeholder="Confirmation mot de passe" required="true">
 
                                 </div>
 
