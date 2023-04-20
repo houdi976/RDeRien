@@ -23,6 +23,11 @@ jobs:
         php-version: '7.4'
         extensions: mbstring, zip
 
+    - name: Install Composer
+      run: |
+        curl -sS https://getcomposer.org/installer | php
+        sudo mv composer.phar /usr/local/bin/composer
+
     - name: Install dependencies
       run: composer install
 
