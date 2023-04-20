@@ -141,24 +141,23 @@
 	}
 
 	//Récupérer les notifications non lues
+	if (!function_exists('getNotificationsNonLues')) {
 	function getNotificationsNonLues() {
 		if (isset($_SESSION)) {
 		global $db;
 		// préparer la requête SQL
-		$que = $db->prepare("SELECT * FROM notifications N WHERE N.id_utilisateur = :id 
+		$que = $db->prepare("SELECT * FROM notifications n WHERE n.id_utilisateur = :id 
 										AND etat='non lue'");
 				$que->bindParam('id', $_SESSION['id']);
-				$r = $que->execute();
-				if (!$r) {
-					die("Erreur dans la requête : " . mysqli_error($que));
-				}
-				$notification = $que->fetch();
+				$que->execute();
+				$notification = $que->fetchAll(PDO::FETCH_ASSOC);
 				$que->closeCursor();
 				return $notification;
 	  }
 	}
+}
 
-	  	//Récupérer les notifications non lues
+	  	//Récupérer le nombre de notifications non lues
 	if (!function_exists('getNombreNotificationsNonLues')) {
 		function getNombreNotificationsNonLues() {
 			if (isset($_SESSION)) {
@@ -174,6 +173,47 @@
 					return $nombreNotification;
 				else return 0;
 	  		}
+		}
+	}
+
+	if (!function_exists('updateNombreNotifications')) {
+		function updateNombreNotifications() {
+			if (isset($_SESSION)) {
+				global $db;
+				// préparer la requête SQL
+				$query = $db->prepare("UPDATE notifications SET etat='lue' WHERE id_utilisateur=:id AND etat='non lue'");
+				$query->bindParam('id', $_SESSION['id']);
+				$query->execute();
+				$query->fetch();
+				$query->closeCursor();
+	  		}
+		}
+	}
+
+
+	if (!function_exists('getSexe')) {
+		function getSexe() {
+				global $db;
+				// préparer la requête SQL
+				$query = $db->prepare("SELECT s.libelleSexe,s.sexe
+				FROM sexe s");
+				$query->execute();
+				$sexe = $query->fetchAll(PDO::FETCH_ASSOC);;
+				$query->closeCursor();
+				return $sexe;
+		}
+	}
+
+	if (!function_exists('getTypeUser')) {
+		function getTypeUser() {
+				global $db;
+				// préparer la requête SQL
+				$query = $db->prepare("SELECT t.libelleTypeUser
+				FROM typeuser t");
+				$query->execute();
+				$typeUser = $query->fetchAll(PDO::FETCH_ASSOC);;
+				$query->closeCursor();
+				return $typeUser;
 		}
 	}
 	  

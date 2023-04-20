@@ -66,14 +66,9 @@
                                             style="height:40px" required="true">
                                             <option value="" disabled selected>--- Sexe ---</option>
                                             <?php 
-                                            require('../config/database.php');
-                                            // require('../includes/functions.php');
-                                            $q = $db->prepare('SELECT s.libelleSexe,s.sexe
-                                            FROM sexe s');
-                                            $qr = $q->execute();
-                                            // Affichage des données dans la liste déroulante
-           
-                                            while($donnees = $q->fetch()) {
+                                            require_once('../includes/functions.php'); $sexe = getSexe();
+                                            foreach ($sexe as $donnees)
+                                            {
                                                 echo '<option value="' . $donnees["sexe"] . '">' . $donnees["libelleSexe"] . '</option>';
                                             }
             
@@ -82,14 +77,9 @@
                                         <div class="col-md-2 col-sm-9 col-xs-9 "></div>
                                         <select name="typeUsers" class="col-md-5 col-sm-9 col-xs-9" style="height:40px"
                                             required="true">
-                                            <option value="" disabled selected>--- Type de profil ---</option>
-                                            <?php 
-                                            $q = $db->prepare('SELECT t.libelleTypeUser
-                                            FROM typeuser t');
-                                            $qr = $q->execute();
+                                            <?php $typeUser = getTypeUser();
                                             // Affichage des données dans la liste déroulante
-           
-                                            while($donnees = $q->fetch()) {
+                                                foreach ($typeUser as $donnees) {
                                                 echo '<option value="' . $donnees["libelleTypeUser"] . '">' . $donnees["libelleTypeUser"] . '</option>';
                                             }
             
@@ -176,12 +166,12 @@
                                     <div class="col-md-12 col-sm-9 col-xs-9">
 
                                         <input type="text" id="code_postal" name="code_postal" style="height:40px"
-                                            class="col-md-5 col-sm-9 col-xs-9">
+                                            class="col-md-5 col-sm-9 col-xs-9" placeholder="Code postal">
 
                                         <div class="col-md-2 col-sm-9 col-xs-9"></div>
 
                                         <input type="text" id="ville" name="ville" style="height:40px"
-                                            class="col-md-5 col-sm-9 col-xs-9">
+                                            class="col-md-5 col-sm-9 col-xs-9" placeholder="Ville">
                                     </div>
                                 </div>
 

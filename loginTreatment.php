@@ -29,6 +29,7 @@
                   $_SESSION['id']= $resultat['id'];
                   $_SESSION['name']= $resultat['name'];
                   $_SESSION['nbNotif']=  getNombreNotificationsNonLues();
+                  $_SESSION['notif']=  getNotificationsNonLues();
                   
                   header('Location:index.php');
                   // header('Location:consumer/persoPpage.php');

@@ -174,13 +174,13 @@ CREATE TABLE IF NOT EXISTS `typeUser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Notification*/
-CREATE TABLE notifications (
+CREATE TABLE IF NOT EXISTS `notifications` (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   texte VARCHAR(255) NOT NULL,
   id_utilisateur INT(11) NOT NULL,
   etat ENUM('non lue', 'lue') NOT NULL DEFAULT 'non lue',
   date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (id_utilisateur) REFERENCES users(id)
+  FOREIGN KEY (id_utilisateur) REFERENCES users(id) 
 );
 
 INSERT INTO `typeUser` ( `libelleTypeUser`) VALUES
