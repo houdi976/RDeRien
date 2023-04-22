@@ -1,3 +1,4 @@
+<?php require_once ('connexion.php');?>
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8" />
@@ -30,113 +31,94 @@
                 <div class="col-3">
                         <form class="d-flex pb-5" role="search">
                             <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                            <button name="btsearch" class="btn btn-outline-success" type="submit">Rechercher</button>
                         </form>
 
-                            <button style="width:90%" class="btn btn-outline-secondary mb-3 select-Matire">Métaux</button>
+                        <form>
+                            <button type="submit" name="btmetaux"  style="width:90%" class="btn btn-outline-secondary mb-3 select-Matire">Métaux</button>
 
-                            <button style="width:90%" class="btn btn-outline-secondary  mb-3 select-Plastiques">Plastiques</button>
+                            <button type="submit" name="btplastique" style="width:90%" class="btn btn-outline-secondary  mb-3 select-Plastiques">Plastiques</button>
 
-                            <button style="width:90%"class="btn btn-outline-secondary  mb-3 select-Ceramique">Céramiques</button>
+                            <button type="submit" name="btceramique" style="width:90%"class="btn btn-outline-secondary  mb-3 select-Ceramique">Céramiques</button>
 
-                            <button style="width:90%" class="btn btn-outline-secondary mb-3 select-Organique">Organiques</button>
+                            <button type="submit" name="btorganique" style="width:90%" class="btn btn-outline-secondary mb-3 select-Organique">Organiques</button>
 
-                            <button style="width:90%" class="btn btn-outline-secondary  mb-3 select-Composite">Composites</button>
+                            <button type="submit" name="btcomposite" style="width:90%" class="btn btn-outline-secondary  mb-3 select-Composite">Composites</button>
 
+                            <button type="submit" name="bttout" style="width:90%" class="btn btn-outline-secondary  mb-3 select-Composite">TOUT</button>
+
+                        </form>
 
                     </div>
                 <div class="col-9 ">
                 <div class="row d-flex justify-content-between">
-                        <div class="col-lg-4 col-sm-5 mb-4">
-                            <!-- Portfolio item 1-->
-                            <div class="portfolio-item">
-                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
-                                </a>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading">Canette</div>
-                                    <div class="portfolio-caption-subheading text-muted">Illustration</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-5 mb-4">
-                            <!-- Portfolio item 2-->
-                            <div class="portfolio-item">
-                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
-                                </a>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading">Bouteille Plastique</div>
-                                    <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-5 mb-4">
-                            <!-- Portfolio item 3-->
-                            <div class="portfolio-item">
-                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
-                                </a>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading"> Serviettes hygiéniques</div>
-                                    <div class="portfolio-caption-subheading text-muted">Identity</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-5 mb-4 mb-lg-0">
-                            <!-- Portfolio item 4-->
-                            <div class="portfolio-item">
-                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
-                                </a>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading"> Electroménager</div>
-                                    <div class="portfolio-caption-subheading text-muted">Branding</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-5 mb-4 mb-sm-0">
-                            <!-- Portfolio item 5-->
-                            <div class="portfolio-item">
-                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
-                                </a>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading">Caoutchouc</div>
-                                    <div class="portfolio-caption-subheading text-muted">Website Design</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-5">
-                            <!-- Portfolio item 6-->
-                            <div class="portfolio-item">
-                                <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                    <div class="portfolio-hover">
-                                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
-                                </a>
-                                <div class="portfolio-caption">
-                                    <div class="portfolio-caption-heading">Window</div>
-                                    <div class="portfolio-caption-subheading text-muted">Photography</div>
-                                </div>
-                            </div>
-                        </div>
+                    <?php
+
+
+                        // Vérifier la connexion
+                        if ($conn->connect_error) {
+                            die("La connexion a échoué : " . $conn->connect_error);
+                        }
+
+                        // Exécution de la requête SQL
+                        
+                        
+                        // 
+                        if(isset($_GET['btmetaux'])){
+                             $sql = "SELECT * FROM waste WHERE id_category = 1";
+                             //echo "Le bouton a été appuyé !";
+
+
+
+                        }
+                        else if(isset($_GET['btplastique'])){
+                            $sql = "SELECT * FROM waste WHERE id_category = 2";
+                        }
+                        else if(isset($_GET['btorganique'])){
+                            $sql = "SELECT * FROM waste WHERE id_category = 4";
+                        }
+                        else{
+                            $sql = "SELECT * FROM waste ";
+                        }
+                        
+                        // Vérifier si la requête a renvoyé des résultats
+                        $result = $conn->query($sql);  
+                        while($row = $result->fetch_assoc()) 
+                        {
+                        ?>
+                            <?php  
+                            echo "<div class='col-lg-4 col-sm-5 mb-4'>";
+                            echo "<div class='portfolio-item'>";
+                            echo "<a class='portfolio-link' data-bs-toggle='modal' href='#portfolioModal1'>";
+                            echo "<div class='portfolio-hover'>";
+                            echo "<div class='portfolio-hover-content'><i class='fas fa-plus fa-3x'></i></div>";
+                            echo "</div>";
+                            echo "<img class='img-fluid' src='" . $row['waste_photo'] . "' alt='...' />";
+                            echo "</a>";
+                            echo "<div class='portfolio-caption'>";
+                            echo "<div class='portfolio-caption-heading'>" . $row['waste_name'] . "</div>";
+                            echo "<div class='portfolio-caption-subheading text-muted'>" . $row['waste_description'] . "</div>";
+                            echo "</div>";
+                            echo "</div>";
+                            echo "</div>";
+                            ?>
+                        <?php } ?>
+                       <!--//if ($result->num_rows > 0) {
+                            // Afficher les résultats
+                           //$sql = "SELECT * FROM waste "; 
+                           
+                            
+                        //}
+ //else {
+                          //  echo "Aucun résultat trouvé.";
+                        //}
+
+                        // Fermer la connexion
+                        //$conn->close(); -->
+                        
+
+                       
+
                     </div>
                 </div>
 
