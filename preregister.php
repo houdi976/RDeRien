@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="collector/registerCollector.php">
                             <div class="portfolio-hover-content">
                             </div>
                         <img class="img-fluid" src="assets/img/register/espacecollecteur.png" alt="..." />
@@ -46,7 +46,7 @@
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="consumer/registerConsumer.php">
                             <div class="portfolio-hover-content">
                             </div>
                         <img class="img-fluid" src="assets/img/register/espacerecycleur.png" alt="..." />

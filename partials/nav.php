@@ -41,7 +41,7 @@
                 </a>
 
                 <?php } else { 
-                    $chemin = "consumer/files/".$_SESSION['photo'];
+                    $chemin = "files/".$_SESSION['photo'];
                     $notif = $_SESSION['notif'];
                     ?>
                 <!-- href="persoPpage.php" -->

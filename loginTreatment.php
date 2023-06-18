@@ -30,8 +30,13 @@
                   $_SESSION['name']= $resultat['name'];
                   $_SESSION['nbNotif']=  getNombreNotificationsNonLues();
                   $_SESSION['notif']=  getNotificationsNonLues();
+                  if($resultat['type_user'] == "Collecteur"){
+                     header('Location:collector/persoPpage.php');
+                  }else{
+                    header('Location:index.php');
+                  }
                   
-                  header('Location:index.php');
+                
                   // header('Location:consumer/persoPpage.php');
               }else{
                 $login_error = "Mauvais mot de passe";

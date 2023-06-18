@@ -85,6 +85,7 @@ if (isset($_POST['register'])) {
                     VALUES(:collector_id)");
                     $req->bindParam('collector_id', $id);
                     $req->execute();
+
                     set_flash('Inscription réussie ! Veuillez Vous<a href="../login.php"> connecter</a>', 'success');
                 } else if ($typeUsers == "Recycleur") {
 

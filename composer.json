@@ -1,12 +1,6 @@
 {
-    "name": "RdeRien",
-    "description": "RdeRien",
-    "type": "project",
     "require": {
         "php": ">=7.4",
         "monolog/monolog": "^2.0"
-    },
-    "scripts": {
-        "test": "phpunit tests/"
     }
 }
